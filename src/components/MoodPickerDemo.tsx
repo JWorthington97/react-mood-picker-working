@@ -4,38 +4,11 @@ function MoodPickerDemo(): JSX.Element {
   const [moodValueFromCurrentRender, queueRerenderWithNewMoodValue] =
     useState("confused");
 
-  const handleMoodChangeToHappy = () => {
-    const nextMood = "happy";
-    queueRerenderWithNewMoodValue(nextMood);
-    console.log(
-      "😀 queued a rerender with mood as",
-      nextMood,
-      "but in this render it is still",
-      moodValueFromCurrentRender
-    );
-  };
+  const handleMoodChangeToHappy = () => queueRerenderWithNewMoodValue('happy');
 
-  const handleMoodChangeToConfused = () => {
-    const nextMood = "confused";
-    queueRerenderWithNewMoodValue(nextMood);
-    console.log(
-      "🤔 queued a rerender with mood as",
-      nextMood,
-      "but in this render it is still",
-      moodValueFromCurrentRender
-    );
-  };
+  const handleMoodChangeToConfused = () => queueRerenderWithNewMoodValue('confused');
 
-  const handleMoodChangeToSad = () => {
-    const nextMood = "sad";
-    queueRerenderWithNewMoodValue(nextMood);
-    console.log(
-      "😢 queued a rerender with mood as",
-      nextMood,
-      "but in this render it is still",
-      moodValueFromCurrentRender
-    );
-  };
+  const handleMoodChangeToSad = () => queueRerenderWithNewMoodValue('sad');
 
   console.log(
     "Component is rendering with a mood value of",
@@ -49,6 +22,9 @@ function MoodPickerDemo(): JSX.Element {
       <button onClick={handleMoodChangeToHappy}>😀</button>
       <button onClick={handleMoodChangeToConfused}>🤔</button>
       <button onClick={handleMoodChangeToSad}>😢</button>
+      <button onClick={() => queueRerenderWithNewMoodValue('excited')}>🤩</button> 
+      <button onClick={() => queueRerenderWithNewMoodValue('sleepy')}>💤</button>
+      {/* last 2 are anonymous arrow functions */}
     </>
   );
 }
